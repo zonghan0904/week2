@@ -69,8 +69,11 @@ int main(int argc, char **argv)
 
     // Your error-driven controller design
     Coordinate_Transform(turtle_coor_x, turtle_coor_y);
-    vel_msg.linear.x =  0.3 * turtle_coor_x;
+    vel_msg.linear.x =  1 * turtle_coor_x;
     vel_msg.angular.z = 1 * turtle_coor_y;
+    if (vel_msg.linear.x > 0.5){
+	vel_msg.linear.x = 0.5;
+    }
     turtlesim_pub.publish(vel_msg);
 
     count ++;
